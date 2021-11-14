@@ -11,7 +11,7 @@
     <h2>
         <a href="/users?action=create">Add New User</a>
     </h2>
-    <form>
+    <form action="/users?action=selectAllUsersByCountry">
         <h2>Tìm User theo Country</h2>
         <input type="text" name="country">
         <input type="submit">
