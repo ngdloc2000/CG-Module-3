@@ -6,4 +6,6 @@ public interface IDao<T> {
     List<T> findAll();
 
     T findById(int id);
+
+    List<T> searchByName(String name);
 }
