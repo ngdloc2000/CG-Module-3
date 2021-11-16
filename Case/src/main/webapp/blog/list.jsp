@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.Blog" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: ADMIN
   Date: 12-Nov-21
@@ -36,9 +37,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Favourite</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Category</a>
-            </li>
+            <c:if test="${-1<0}">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Category</a>
+                </li>
+            </c:if>
+
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fab fa-facebook-f"></i>
@@ -56,142 +60,135 @@
             </li>
         </ul>
 
+        <%--        Tìm kiếm--%>
         <form method="get" action="/blogs">
             <div class="search-box d-flex">
-                <input name="name" type="text" class="form-control form-control-dark" placeholder="Nhập tên blog ..." style="width: 200px"/>
+                <input name="name" type="text" class="form-control form-control-dark" placeholder="Nhập tên blog ..."
+                       style="width: 200px"/>
                 <input name="action" value="searchBlogByName" hidden>
-                <input type="submit">
+                <button class="nav-link" style="border: none; background: none">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </form>
-        
-<%--        <div class="search-box d-flex">--%>
-<%--            <input name="name" type="search" class="form-control form-control-dark" placeholder="Nhập tên blog ..."--%>
-<%--                   aria-label="Search" style="width: 200px"/>--%>
-<%--            <a href="/blogs?action=searchBlogByName" class="nav-link">--%>
-<%--                <i class="fas fa-search"></i>--%>
-<%--            </a>--%>
-<%--        </div>--%>
 
         <button class="out" style="width: 70px; height: 20px">Log out</button>
     </div>
 </header>
-<!-- ----------------------- HEADER ---------------------------- -->
 
 <!-- --------------------------- MAIN SECSION -----------------------  -->
 <div id="main-secsion" class="mt-5">
 
     <%--    ------------------------ SLIDE ------------------------------%>
-    <div id="carouselExampleCaptions" class="carousel slide container" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-        </div>
+<%--        <%--%>
+<%--                List<Blog> list = (List<Blog>) request.getAttribute("list");--%>
+<%--                Blog b1 = list.get(0);--%>
+<%--                Blog b2 = list.get(1);--%>
+<%--                Blog b3 = list.get(2);--%>
+<%--                request.setAttribute("b1", b1);--%>
+<%--                request.setAttribute("b2", b2);--%>
+<%--                request.setAttribute("b3", b3);--%>
+<%--            %>--%>
+<%--    <div class="row">--%>
+<%--        <div id="carouselExampleCaptions" class="carousel slide container" data-bs-ride="carousel">--%>
+<%--            <div class="carousel-indicators">--%>
+<%--                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"--%>
+<%--                        aria-current="true" aria-label="Slide 1"></button>--%>
+<%--                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"--%>
+<%--                        aria-label="Slide 2"></button>--%>
+<%--                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"--%>
+<%--                        aria-label="Slide 3"></button>--%>
+<%--            </div>--%>
+<%--            <div class="carousel-item active">--%>
 
-        <c:forEach var="blog" items="${list}">
-            <div class="carousel-inner">
-                <div class="carousel-item">
-                    <img src="${blog.image}" class="img-slide d-block w-100" alt="..."/>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
+<%--                <img src="${b1.image}" class="img-slide d-block w-100" alt="..."/>--%>
+<%--                <div class="carousel-caption d-none d-md-block">--%>
+<%--                    <h5>${b1.name}</h5>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="carousel-item">--%>
+<%--                <img src="${b2.image}" class="img-slide d-block w-100" alt="..."/>--%>
+<%--                <div class="carousel-caption d-none d-md-block">--%>
+<%--                    <h5>${b2.name}</h5>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="carousel-item">--%>
+<%--                <img src="${b3.image}" class="img-slide d-block w-100" alt="..."/>--%>
+<%--                <div class="carousel-caption d-none d-md-block">--%>
+<%--                    <h5>${b3.name}</h5>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+
+<%--            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"--%>
+<%--                    data-bs-slide="prev">--%>
+<%--                <span class="carousel-control-prev-icon" aria-hidden="true"></span>--%>
+<%--                <span class="visually-hidden">Previous</span>--%>
+<%--            </button>--%>
+<%--            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"--%>
+<%--                    data-bs-slide="next">--%>
+<%--                <span class="carousel-control-next-icon" aria-hidden="true"></span>--%>
+<%--                <span class="visually-hidden">Next</span>--%>
+<%--            </button>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+    <%-- --------------------------------------- LIST BLOG -----------------------------------%>
+    <div class="row">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row text-center mt-5 mb-5">
+                    <h1 class="text-title">All Blogs</h1>
+                </div>
+                <div class="mb-3 d-flex justify-content-end align-items-center">
+                    <span style="width: 90px">Thể loại</span>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Chọn thể loại
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <c:forEach items="${listType}" var="type">
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="/blogs?action=selectBlogByType&id=${type.id}">${type.name}
+                                    </a>
+                                </li>
+                            </c:forEach>
+                        </ul>
                     </div>
                 </div>
-            </div>
-        </c:forEach>
-        <%--            <div class="carousel-item active">--%>
-        <%--                <img src="./img/anh-1.jpg" class="img-slide d-block w-100" alt="..."/>--%>
-        <%--                <div class="carousel-caption d-none d-md-block">--%>
-        <%--                    <h5>First slide label</h5>--%>
-        <%--                    <p>Some representative placeholder content for the first slide.</p>--%>
-        <%--                </div>--%>
-        <%--            </div>--%>
-        <%--            <div class="carousel-item">--%>
-        <%--                <img src="./img/anh-2.jpg" class="img-slide d-block w-100" alt="..."/>--%>
-        <%--                <div class="carousel-caption d-none d-md-block">--%>
-        <%--                    <h5>Second slide label</h5>--%>
-        <%--                    <p>Some representative placeholder content for the second slide.</p>--%>
-        <%--                </div>--%>
-        <%--            </div>--%>
-        <%--            <div class="carousel-item">--%>
-        <%--                <img src="./img/anh-3.jfif" class="img-slide d-block w-100" alt="..."/>--%>
-        <%--                <div class="carousel-caption d-none d-md-block">--%>
-        <%--                    <h5>Third slide label</h5>--%>
-        <%--                    <p>Some representative placeholder content for the third slide.</p>--%>
-        <%--                </div>--%>
-        <%--            </div>--%>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    <%--    ------------------------ SLIDE ------------------------------%>
-
-    <%-- --------------------------------------- LIST BLOG -----------------------------------%>
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row text-center mt-5 mb-5">
-                <h1 class="text-title">All Blogs</h1>
-            </div>
-            <div class="mb-3 d-flex justify-content-end align-items-center">
-                <span style="width: 90px">Thể loại</span>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Chọn thể loại
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <c:forEach items="${listType}" var="type">
-                            <li>
-                                <a class="dropdown-item"
-                                   href="/blogs?action=selectBlogByType&id=${type.id}">${type.name}
-                                </a>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </div>
-            </div>
-            <c:forEach items="${listType}" var="type">
+                <c:forEach items="${listType}" var="type">
                     <a class="dropdown-item"
                        href="/blogs?action=selectBlogByType&id=${type.id}">${type.name}
                     </a>
-            </c:forEach>
-        </div>
-        <div class="row">
-            <c:forEach var="blog" items="${list}">
-                <div class="col-md-3 col-sm-6 mb-5">
-                    <div class="card" style="width: 100%;">
-                        <img src="${blog.image}" class="card-img-top" alt="..." style="height: 200px">
-                        <div class="card-body text-center">
-                            <h5 class="card-title text-center">${blog.name}</h5>
-                            <div class="d-flex justify-content-around mt-2 mb-3">
+                </c:forEach>
+            </div>
+            <div class="row">
+                <c:forEach var="blog" items="${list}">
+                    <div class="col-md-3 col-sm-6 mb-5">
+                        <div class="card" style="width: 100%;">
+                            <img src="${blog.image}" class="card-img-top" alt="..." style="height: 200px">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center">${blog.name}</h5>
+                                <div class="d-flex justify-content-around mt-2 mb-3">
                                 <span>
                                     <i class="fas fa-calendar-alt text-primary" style="margin-right: 10px"></i>
                                         ${blog.date}
                                 </span> <br>
-                                <span>
+                                    <span>
                                     <i class="fas fa-keyboard text-primary" style="margin-right: 10px"></i>
                                         ${blog.typeBlog.name}
                                 </span> <br>
+                                </div>
+                                <a href="#" class="btn btn-primary">Xem bài viết</a>
                             </div>
-                            <a href="#" class="btn btn-primary">Xem bài viết</a>
                         </div>
                     </div>
-                </div>
-            </c:forEach>
+                </c:forEach>
+            </div>
+            <%----------------------------------------- LIST BLOG -----------------------------------%>
         </div>
-        <%----------------------------------------- LIST BLOG -----------------------------------%>
     </div>
-    <!-- --------------------------- MAIN SECSION -----------------------  -->
+    <!-- ----------XXXXXXX---------- MAIN SECSION ---------XXXXX--------  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
